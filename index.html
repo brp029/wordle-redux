@@ -13,33 +13,71 @@
 <body>
 <div id="myapp"></div>
 	<script>
-		function Guess (letter, accurate) {
-			this.letter=letter;
-			this.accurate = accurate;
+		function MyGuess ({letter, accurate}) {
+			return React.createElement("div", {className: accurate}, letter);
 		}
-		function Key (let, acc) {
-			this.let = let;
-			this.acc = acc;
+		
+		function Key ({letr, acc}) {
+			return React.createElement ("div", {className: acc}, letr);
 		}
-		guess1 = [new Guess ("M", "correct"), new Guess ("I", "wrong"), new Guess ("G", "wrong"), new Guess ("H", "wrong"), new Guess ("T", "wrong")];
-		guess2 = [new Guess ("F", "wrong"), new Guess ("L", "wrong"), new Guess ("O", "correct"), new Guess ("O", "close"), new Guess ("D", "close")];
-		guess3 = [new Guess ("S", "wrong"), new Guess ("T", "wrong"), new Guess ("R", "wrong"), new Guess ("A", "wrong"), new Guess ("Y", "correct")];
-		guess4 = [new Guess (" ", "blank"), new Guess (" ", "blank"), new Guess (" ", "blank"), new Guess (" ", "blank"), new Guess (" ", "blank")];
-		guess5 = [new Guess (" ", "blank"), new Guess (" ", "blank"), new Guess (" ", "blank"), new Guess (" ", "blank"), new Guess (" ", "blank")];
-		guess6 = [new Guess (" ", "blank"), new Guess (" ", "blank"), new Guess (" ", "blank"), new Guess (" ", "blank"), new Guess (" ", "blank")];
-		row1 = [new Key ("Q", "kblank"), new Key ("W", "kblank"), new Key ("E", "kblank"), new Key ("R", "kwrong"), new Key ("T", "kwrong"), new Key ("Y", "kcorrect"), new Key ("U", "kblank"), new Key ("I", "kwrong"), new Key ("O", "kcorrect"), new Key ("P", "kblank")];
-		row2 = [new Key ("A", "kwrong"), new Key ("S", "kwrong"), new Key ("D", "kclose"), new Key ("F", "kwrong"), new Key ("G", "kwrong"), new Key ("H", "kwrong"), new Key ("J", "kblank"), new Key ("K", "kblank"), new Key ("L", "kwrong")];
-		row3 = [new Key ("Z", "kblank"), new Key ("X", "kblank"), new Key ("C", "kblank"), new Key ("V", "kblank"), new Key ("B", "kblank"), new Key ("N", "kblank"), new Key ("M", "kcorrect")];
-		var blocks = [guess1.map((item, i) => React.createElement("div", {className: item.accurate, key: i}, item.letter)), 
-					  guess2.map((item, i) => React.createElement("div", {className: item.accurate, key: i}, item.letter)),
-					  guess3.map((item, i) => React.createElement("div", {className: item.accurate, key: i}, item.letter)),
-					  guess4.map((item, i) => React.createElement("div", {className: item.accurate, key: i}, item.letter)),
-					  guess5.map((item, i) => React.createElement("div", {className: item.accurate, key: i}, item.letter)),
-					  guess6.map((item, i) => React.createElement("div", {className: item.accurate, key: i}, item.letter)),
+		
+		var blocks = [React.createElement(MyGuess, {letter: "M", accurate: "correct"}, null), 
+					  React.createElement(MyGuess, {letter: "I", accurate: "wrong"}, null),
+					  React.createElement(MyGuess, {letter: "G", accurate: "wrong"}, null),
+					  React.createElement(MyGuess, {letter: "H", accurate: "wrong"}, null),
+					  React.createElement(MyGuess, {letter: "T", accurate: "wrong"}, null),
+					  React.createElement(MyGuess, {letter: "F", accurate: "wrong"}, null), 
+					  React.createElement(MyGuess, {letter: "L", accurate: "wrong"}, null),
+					  React.createElement(MyGuess, {letter: "O", accurate: "correct"}, null),
+					  React.createElement(MyGuess, {letter: "O", accurate: "close"}, null),
+					  React.createElement(MyGuess, {letter: "D", accurate: "close"}, null),
+					  React.createElement(MyGuess, {letter: "S", accurate: "wrong"}, null), 
+					  React.createElement(MyGuess, {letter: "T", accurate: "wrong"}, null),
+					  React.createElement(MyGuess, {letter: "R", accurate: "wrong"}, null),
+					  React.createElement(MyGuess, {letter: "A", accurate: "wrong"}, null),
+					  React.createElement(MyGuess, {letter: "Y", accurate: "correct"}, null),
+					  React.createElement(MyGuess, {letter: " ", accurate: "blank"}, null), 
+					  React.createElement(MyGuess, {letter: " ", accurate: "blank"}, null),
+					  React.createElement(MyGuess, {letter: " ", accurate: "blank"}, null),
+					  React.createElement(MyGuess, {letter: " ", accurate: "blank"}, null),
+					  React.createElement(MyGuess, {letter: " ", accurate: "blank"}, null),
+					  React.createElement(MyGuess, {letter: " ", accurate: "blank"}, null), 
+					  React.createElement(MyGuess, {letter: " ", accurate: "blank"}, null),
+					  React.createElement(MyGuess, {letter: " ", accurate: "blank"}, null),
+					  React.createElement(MyGuess, {letter: " ", accurate: "blank"}, null),
+					  React.createElement(MyGuess, {letter: " ", accurate: "blank"}, null),
+					  React.createElement(MyGuess, {letter: " ", accurate: "blank"}, null), 
+					  React.createElement(MyGuess, {letter: " ", accurate: "blank"}, null),
+					  React.createElement(MyGuess, {letter: " ", accurate: "blank"}, null),
+					  React.createElement(MyGuess, {letter: " ", accurate: "blank"}, null),
+					  React.createElement(MyGuess, {letter: " ", accurate: "blank"}, null),
 					  React.createElement("div", {id: "keyboard"}, "Keyboard"),
-					  row1.map((item, i) => React.createElement("div", {className: item.acc, key: i}, item.let)),
-					  row2.map((item, i) => React.createElement("div", {className: item.acc, key: i}, item.let)),
-					  row3.map((item, i) => React.createElement("div", {className: item.acc, key: i}, item.let))
+					  React.createElement(Key, {letr: "A", acc: "kwrong"}, null),
+					  React.createElement(Key, {letr: "B", acc: "kblank"}, null),
+					  React.createElement(Key, {letr: "C", acc: "kblank"}, null),
+					  React.createElement(Key, {letr: "D", acc: "kclose"}, null),
+					  React.createElement(Key, {letr: "E", acc: "kblank"}, null),
+					  React.createElement(Key, {letr: "F", acc: "kwrong"}, null),
+					  React.createElement(Key, {letr: "G", acc: "kwrong"}, null),
+					  React.createElement(Key, {letr: "H", acc: "kwrong"}, null),
+					  React.createElement(Key, {letr: "I", acc: "kwrong"}, null),
+					  React.createElement(Key, {letr: "J", acc: "kblank"}, null),
+					  React.createElement(Key, {letr: "K", acc: "kblank"}, null),
+					  React.createElement(Key, {letr: "L", acc: "kwrong"}, null),
+					  React.createElement(Key, {letr: "M", acc: "kcorrect"}, null),
+					  React.createElement(Key, {letr: "N", acc: "kblank"}, null),
+					  React.createElement(Key, {letr: "O", acc: "kcorrect"}, null),
+					  React.createElement(Key, {letr: "P", acc: "kblank"}, null),
+					  React.createElement(Key, {letr: "Q", acc: "kblank"}, null),
+					  React.createElement(Key, {letr: "R", acc: "kwrong"}, null),
+					  React.createElement(Key, {letr: "S", acc: "kwrong"}, null),
+					  React.createElement(Key, {letr: "T", acc: "kwrong"}, null),
+					  React.createElement(Key, {letr: "U", acc: "kblank"}, null),
+					  React.createElement(Key, {letr: "V", acc: "kblank"}, null),
+					  React.createElement(Key, {letr: "W", acc: "kblank"}, null),
+					  React.createElement(Key, {letr: "X", acc: "kblank"}, null),
+					  React.createElement(Key, {letr: "Y", acc: "kcorrect"}, null),
+					  React.createElement(Key, {letr: "Z", acc: "kblank"}, null),
 					 ];
 		ReactDOM.render(blocks, myapp);
 		</script>
